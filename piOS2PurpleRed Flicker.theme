@@ -1,0 +1,40 @@
+/**
+ * @name piOS
+ * @author Saltssaumure
+ * @authorLink https://github.com/Saltssaumure
+ * @description A SUPERHOT piOS inspired theme.
+ * @license GPL-3.0
+ * @version 9.3
+ * @invite uy8nKQVatp
+ * @source https://github.com/Saltssaumure/pios-discord-theme
+ * @donate https://ko-fi.com/saltssaumure
+*/
+
+@import url("https://saltssaumure.github.io/pios-discord-theme/pios.min.css");
+
+/* See https://github.com/Saltssaumure/pios-discord-theme#customisation for customisation settings. */
+:root {
+    --pios-glow-hue:        -120;
+    --pios-glow-intensity:  3;
+    --pios-spacing:         1;
+    --pios-accent-hue:      -60;
+    --pios-title-text:      "BYOS v6.9.4.2.0";
+
+    --crt-stripe:   block;
+    --crt-scanline: block;   /* ⛐ This effect is performance-intensive. */
+    --crt-flicker:  flicker;   /* ⚠ This is a fast flickering effect and may not be suitable for those with photosensitive epilepsy. */
+}
+
+.theme-dark {
+    --pios-background-color:    #000000;
+    --pios-bright-color:        #fc03ca;
+    --pios-middle-color:        #ff5252;
+    --pios-dim-color:           #850099;
+}
+
+.theme-light {
+    --pios-background-color:    #FFFFFF;
+    --pios-bright-color:        #000000;
+    --pios-middle-color:        #696969;
+    --pios-dim-color:           #A9A9A9;
+}
