@@ -15,8 +15,8 @@
 /* See https://github.com/Saltssaumure/pios-discord-theme#customisation for customisation settings. */
 :root {
     --pios-glow-hue:        -120;
-    --pios-glow-intensity:  3;
-    --pios-spacing:         1;
+    --pios-glow-intensity:  10;
+    --pios-spacing:         0.5;
     --pios-accent-hue:      -60;
     --pios-title-text:      "BYOS v6.9.4.2.0";
 
