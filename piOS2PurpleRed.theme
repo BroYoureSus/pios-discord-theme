@@ -12,12 +12,14 @@
 
 @import url("https://saltssaumure.github.io/pios-discord-theme/pios.min.css");
 
+@import url('https://commandcrafterhd.github.io/Fallout4TerminalTheme/css/crtEffect.css');
+
 /* See https://github.com/Saltssaumure/pios-discord-theme#customisation for customisation settings. */
 :root {
     --pios-glow-hue:        -120;
     --pios-glow-intensity:  3;
     --pios-spacing:         1;
-    --pios-accent-hue:      0;
+    --pios-accent-hue:      1;
     --pios-title-text:      "BYOS v6.9.4.2.0";
 
     --crt-stripe:   block;
