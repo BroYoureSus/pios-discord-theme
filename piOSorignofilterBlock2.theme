@@ -165,8 +165,8 @@ nav *, header *, aside * {
 /* ===================================================== */
 
 :root{
-  --pios-glow-size: 2.2px;     /* spread distance */
-  --pios-glow-strength: 0.45;  /* brightness */
+  --pios-glow-size: 8px;     /* spread distance */
+  --pios-glow-strength: 0.75;  /* brightness */
 }
 
 /* wipe any old text shadows */
