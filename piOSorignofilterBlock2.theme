@@ -132,3 +132,60 @@ nav *, header *, aside *{
     0 0 calc(var(--pios-glow-intensity) * 3px) rgba(0,255,255,0.35)
     !important;
 }
+
+/* ===================================================== */
+/* DISCORD TEXT OPACITY + FILTER NUCLEAR RESET (2026)    */
+/* ===================================================== */
+
+/* Remove Discord dimming + filters from ALL containers */
+[class*="container"],
+[class*="content"],
+[class*="chat"],
+[class*="messages"],
+[class*="sidebar"],
+[class*="members"],
+main, section, article, aside, nav, header, footer {
+    opacity: 1 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Remove any remaining inherited opacity */
+* {
+    opacity: 1 !important;
+}
+
+/* ===================================================== */
+/* CLEAN WHITE TEXT + SUBTLE CYAN BLOOM                  */
+/* ===================================================== */
+
+:root {
+    --pios-glow-intensity: 1.3;
+}
+
+/* First wipe ALL shadows completely */
+*, *::before, *::after {
+    text-shadow: none !important;
+}
+
+/* Then apply our glow ONCE */
+body,
+span,
+p,
+strong,
+em,
+h1,h2,h3,h4,h5,
+[class*="message"],
+[class*="username"],
+[class*="channel"],
+[class*="name"],
+nav *, header *, aside * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+
+    text-shadow:
+        0 0 0.3px rgba(255,255,255,0.95),
+        0 0 calc(var(--pios-glow-intensity) * 1px) rgba(255,255,255,0.8),
+        0 0 calc(var(--pios-glow-intensity) * 4px) rgba(0,255,255,0.28)
+        !important;
+}
