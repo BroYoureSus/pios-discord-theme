@@ -1,48 +1,6 @@
 
-/**
- * piOS BASELINE (known stable in Discord 2026)
- * Minimal glow system only
- */
+/* ================= DIAGNOSTIC TEST ================= */
 
-/* ================= VARIABLES ================= */
-
-:root{
-  --pios-glow-size: 2px;
-  --pios-glow-intensity: 0.35;
-  --pios-title-text: "Custom OS Modified";
-}
-
-/* ================= BACKGROUND ================= */
-
-.appMount-2yBXZl{
-  background:#000 !important;
-}
-
-/* ================= TEXT COLOR ================= */
-
-body, span, p, strong, em, h1,h2,h3,h4,h5{
-  color:#fff !important;
-}
-
-/* ================= SAFE GLOW (ONLY MESSAGE TEXT) ================= */
-
-[class*="messageContent"],
-[class*="markup"]{
-
-  text-shadow:
-    0 0 1px rgba(255,255,255,0.9),
-    0 0 calc(var(--pios-glow-size) * 1px)
-      rgba(255,255,255,var(--pios-glow-intensity)),
-    0 0 calc(var(--pios-glow-size) * 2px)
-      rgba(0,255,255,var(--pios-glow-intensity))
-    !important;
-}
-
-/* ================= TITLE ================= */
-
-[class*="wordmark"]::after{
-  content: var(--pios-title-text);
-  margin-left: 8px;
-  font-weight: 700;
-  color:#fff;
+* {
+  text-shadow: 0 0 8px red !important;
 }
