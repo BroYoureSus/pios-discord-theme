@@ -6,19 +6,31 @@
 /* ================= VARIABLES ================= */
 
 :root{
-  --pios-glow-hue: 0;
-  --pios-glow-intensity: 8;
+  --pios-glow-hue: 185;
+  --pios-glow-intensity: 1.8;
   --pios-title-text: "Custom OS Modified";
 }
 
 /* ================= GLOW CORE ================= */
 
 /* Real glow definition */
+
 :root{
   --pios-glow:
-    0 0 calc(var(--pios-glow-intensity) * 1px) hsl(var(--pios-glow-hue),100%,70%),
-    0 0 calc(var(--pios-glow-intensity) * 3px) hsl(var(--pios-glow-hue),100%,70%),
-    0 0 calc(var(--pios-glow-intensity) * 6px) hsl(var(--pios-glow-hue),100%,70%);
+    /* white core highlight */
+    0 0 0.4px rgba(255,255,255,0.9),
+
+    /* soft white glow hugging text */
+    0 0 calc(var(--pios-glow-intensity) * 1px)
+      rgba(255,255,255,0.85),
+
+    /* coloured bloom */
+    0 0 calc(var(--pios-glow-intensity) * 4px)
+      hsla(var(--pios-glow-hue),100%,70%,0.35),
+
+    /* outer atmosphere */
+    0 0 calc(var(--pios-glow-intensity) * 8px)
+      hsla(var(--pios-glow-hue),100%,70%,0.18);
 }
 
 /* 🚨 THIS IS THE CRITICAL FIX */
