@@ -6,8 +6,8 @@
 /* ================= VARIABLES ================= */
 
 :root{
-  --pios-glow-hue: 185;
-  --pios-glow-intensity: 1.8;
+  --pios-glow-hue: 180;
+  --pios-glow-intensity: 4;
   --pios-title-text: "Custom OS Modified";
 }
 
