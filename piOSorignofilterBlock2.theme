@@ -1,40 +1,117 @@
 /**
- * @name piOS
- * @author Saltssaumure
- * @authorLink https://github.com/Saltssaumure
- * @description A SUPERHOT piOS inspired theme.
- * @license GPL-3.0
- * @version 9.3
- * @invite uy8nKQVatp
- * @source https://github.com/Saltssaumure/pios-discord-theme
- * @donate https://ko-fi.com/saltssaumure
-*/
+ * piOS Rebuilt — Minimal Modern Version
+ * Only text + color customisation
+ * Compatible with 2025 Discord UI
+ */
 
-@import url("https://saltssaumure.github.io/pios-discord-theme/pios.min.css");
+/* ================= ROOT VARIABLES ================= */
 
-/* See https://github.com/Saltssaumure/pios-discord-theme#customisation for customisation settings. */
 :root {
-    --pios-glow-hue:        180;
-    --pios-glow-intensity:  4;
-    --pios-spacing:         1;
-    --pios-accent-hue:      0;
-    --pios-title-text:      "Custom OS Modified";
+  /* Glow */
+  --pios-glow-hue: 0;
+  --pios-glow-intensity: 6;
 
-    --crt-stripe:   none;
-    --crt-scanline: none;   /* ⛐ This effect is performance-intensive. */
-    --crt-flicker:  none;   /* ⚠ This is a fast flickering effect and may not be suitable for those with photosensitive epilepsy. */
+  /* UI spacing scale */
+  --pios-spacing: 1;
+
+  /* Window title text */
+  --pios-title-text: "Custom OS Modified";
 }
 
+/* ================= COLOR SYSTEM ================= */
+
 .theme-dark {
-    --pios-background-color:    #000000;
-    --pios-bright-color:        #FFFFFF;
-    --pios-middle-color:        #D3D3D3;
-    --pios-dim-color:           #808080;
+  --pios-bg: #000000;
+  --pios-bright: #ffffff;
+  --pios-mid: #cfcfcf;
+  --pios-dim: #808080;
 }
 
 .theme-light {
-    --pios-background-color:    #FFFFFF;
-    --pios-bright-color:        #000000;
-    --pios-middle-color:        #696969;
-    --pios-dim-color:           #A9A9A9;
+  --pios-bg: #ffffff;
+  --pios-bright: #000000;
+  --pios-mid: #5a5a5a;
+  --pios-dim: #a0a0a0;
+}
+
+/* Apply background globally */
+.appMount-2yBXZl,
+[class*="app_"],
+[class*="container_"] {
+  background: var(--pios-bg) !important;
+  color: var(--pios-bright) !important;
+}
+
+/* ================= GLOW ENGINE ================= */
+
+:root {
+  --pios-glow:
+    0 0 calc(var(--pios-glow-intensity) * 1px)
+      hsl(var(--pios-glow-hue), 100%, 70%),
+    0 0 calc(var(--pios-glow-intensity) * 3px)
+      hsl(var(--pios-glow-hue), 100%, 70%);
+}
+
+/* All readable text */
+body,
+span,
+p,
+h1, h2, h3, h4, h5,
+strong,
+em {
+  text-shadow: var(--pios-glow);
+}
+
+/* ================= DISCORD SPECIFIC TEXT ================= */
+
+/* Messages */
+[class*="messageContent"],
+[class*="markup"] {
+  text-shadow: var(--pios-glow) !important;
+}
+
+/* Usernames */
+[class*="username"],
+[class*="userTag"],
+[class*="headerText"] span {
+  text-shadow: var(--pios-glow) !important;
+}
+
+/* Channel names */
+[class*="channelName"],
+[class*="name"],
+[class*="linkTop"] {
+  text-shadow: var(--pios-glow) !important;
+}
+
+/* Server list */
+[class*="guildName"] {
+  text-shadow: var(--pios-glow) !important;
+}
+
+/* Settings & sidebar text */
+[class*="side"] * {
+  text-shadow: var(--pios-glow);
+}
+
+/* ================= TITLE BAR TEXT ================= */
+
+/* Replaces "Discord" word in top left */
+[class*="wordmark"]::after {
+  content: var(--pios-title-text);
+  margin-left: 8px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: var(--pios-glow);
+}
+
+/* ================= OPTIONAL MINIMAL SCROLLBARS ================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pios-mid);
+  border-radius: 10px;
 }
