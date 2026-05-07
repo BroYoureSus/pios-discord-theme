@@ -1,117 +1,83 @@
 /**
- * piOS Rebuilt — Minimal Modern Version
- * Only text + color customisation
- * Compatible with 2025 Discord UI
+ * piOS TEXT EDITION (2026 Discord fix)
+ * Aggressive text glow restoration
  */
 
-/* ================= ROOT VARIABLES ================= */
+/* ================= VARIABLES ================= */
 
-:root {
-  /* Glow */
+:root{
   --pios-glow-hue: 0;
-  --pios-glow-intensity: 6;
-
-  /* UI spacing scale */
-  --pios-spacing: 1;
-
-  /* Window title text */
+  --pios-glow-intensity: 8;
   --pios-title-text: "Custom OS Modified";
 }
 
-/* ================= COLOR SYSTEM ================= */
+/* ================= GLOW CORE ================= */
 
-.theme-dark {
-  --pios-bg: #000000;
-  --pios-bright: #ffffff;
-  --pios-mid: #cfcfcf;
-  --pios-dim: #808080;
-}
-
-.theme-light {
-  --pios-bg: #ffffff;
-  --pios-bright: #000000;
-  --pios-mid: #5a5a5a;
-  --pios-dim: #a0a0a0;
-}
-
-/* Apply background globally */
-.appMount-2yBXZl,
-[class*="app_"],
-[class*="container_"] {
-  background: var(--pios-bg) !important;
-  color: var(--pios-bright) !important;
-}
-
-/* ================= GLOW ENGINE ================= */
-
-:root {
+/* Real glow definition */
+:root{
   --pios-glow:
-    0 0 calc(var(--pios-glow-intensity) * 1px)
-      hsl(var(--pios-glow-hue), 100%, 70%),
-    0 0 calc(var(--pios-glow-intensity) * 3px)
-      hsl(var(--pios-glow-hue), 100%, 70%);
+    0 0 calc(var(--pios-glow-intensity) * 1px) hsl(var(--pios-glow-hue),100%,70%),
+    0 0 calc(var(--pios-glow-intensity) * 3px) hsl(var(--pios-glow-hue),100%,70%),
+    0 0 calc(var(--pios-glow-intensity) * 6px) hsl(var(--pios-glow-hue),100%,70%);
 }
 
-/* All readable text */
+/* 🚨 THIS IS THE CRITICAL FIX */
+/* Discord now disables glow via filters & smoothing */
+*{
+  -webkit-font-smoothing: auto !important;
+  text-rendering: optimizeLegibility !important;
+  filter: none !important;
+}
+
+/* ================= FORCE APPLY GLOW ================= */
+
+/* EVERYTHING TEXT */
 body,
 span,
 p,
-h1, h2, h3, h4, h5,
 strong,
-em {
-  text-shadow: var(--pios-glow);
+em,
+h1,h2,h3,h4,h5 {
+  text-shadow: var(--pios-glow) !important;
 }
-
-/* ================= DISCORD SPECIFIC TEXT ================= */
 
 /* Messages */
-[class*="messageContent"],
-[class*="markup"] {
+[class*="message"] *{
   text-shadow: var(--pios-glow) !important;
 }
 
-/* Usernames */
-[class*="username"],
-[class*="userTag"],
-[class*="headerText"] span {
-  text-shadow: var(--pios-glow) !important;
-}
-
-/* Channel names */
-[class*="channelName"],
-[class*="name"],
-[class*="linkTop"] {
+/* Channel list */
+nav *{
   text-shadow: var(--pios-glow) !important;
 }
 
 /* Server list */
-[class*="guildName"] {
+aside *{
   text-shadow: var(--pios-glow) !important;
 }
 
-/* Settings & sidebar text */
-[class*="side"] * {
-  text-shadow: var(--pios-glow);
+/* Settings */
+[class*="content"] *{
+  text-shadow: var(--pios-glow) !important;
 }
 
-/* ================= TITLE BAR TEXT ================= */
+/* Usernames & headers */
+header *{
+  text-shadow: var(--pios-glow) !important;
+}
 
-/* Replaces "Discord" word in top left */
-[class*="wordmark"]::after {
+/* ================= TITLE TEXT ================= */
+
+[class*="wordmark"]::after{
   content: var(--pios-title-text);
   margin-left: 8px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1px;
-  text-shadow: var(--pios-glow);
+  text-shadow: var(--pios-glow) !important;
 }
 
-/* ================= OPTIONAL MINIMAL SCROLLBARS ================= */
+/* ================= OPTIONAL BLACK BACKGROUND ================= */
 
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--pios-mid);
-  border-radius: 10px;
+.appMount-2yBXZl{
+  background:#000 !important;
 }
