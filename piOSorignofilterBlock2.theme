@@ -27,7 +27,8 @@ body{
 
 
 
-/* ================= CONTROLLED BUT ALWAYS VISIBLE GLOW ================= */
+
+/* ================= TEXT GLOW VIA PSEUDO LAYER ================= */
 
 body,
 span,
@@ -36,30 +37,26 @@ strong,
 em,
 h1,h2,h3,h4,h5,
 [class*="messageContent"],
-[class*="markup"],
-[class*="username"],
-[class*="channelName"],
-[class*="name"]{
+[class*="markup"]{
+  position: relative;
+  color: #fff !important;
+}
 
-  color:#fff !important;
-  -webkit-text-fill-color:#fff !important;
+/* create glow layer behind text */
+body::after,
+span::after,
+p::after,
+[class*="messageContent"]::after,
+[class*="markup"]::after{
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
 
-  text-shadow:none !important;
-
-  /* base glow never disappears */
-  filter:
-    drop-shadow(0 0 0.4px rgba(255,255,255,0.9))
-
-    /* scalable glow */
-    drop-shadow(0 0 calc(1px + var(--pios-glow-size))
-      rgba(255,255,255,calc(0.2 + var(--pios-glow-intensity))))
-
-    drop-shadow(0 0 calc(2px + var(--pios-glow-size))
-      rgba(0,255,255,calc(0.15 + var(--pios-glow-intensity))))
-
-    drop-shadow(0 0 calc(4px + var(--pios-glow-size))
-      rgba(0,255,255,calc(0.1 + var(--pios-glow-intensity))))
-    !important;
+  color: rgba(0,255,255,0.35);
+  filter: blur(4px);
+  pointer-events: none;
 }
 
 /* ================= TITLE TEXT ================= */
