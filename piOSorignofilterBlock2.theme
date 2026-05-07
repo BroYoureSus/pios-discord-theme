@@ -3,36 +3,6 @@
  * Aggressive text glow restoration
  */
 
-/* ================= VARIABLES ================= */
-
-:root{
-  --pios-glow-hue: 180;
-  --pios-glow-intensity: 4;
-  --pios-title-text: "Custom OS Modified";
-}
-
-/* ================= GLOW CORE ================= */
-
-/* Real glow definition */
-
-:root{
-  --pios-glow:
-    /* white core highlight */
-    0 0 0.4px rgba(255,255,255,0.9),
-
-    /* soft white glow hugging text */
-    0 0 calc(var(--pios-glow-intensity) * 1px)
-      rgba(255,255,255,0.85),
-
-    /* coloured bloom */
-    0 0 calc(var(--pios-glow-intensity) * 4px)
-      hsla(var(--pios-glow-hue),100%,70%,0.35),
-
-    /* outer atmosphere */
-    0 0 calc(var(--pios-glow-intensity) * 8px)
-      hsla(var(--pios-glow-hue),100%,70%,0.18);
-}
-
 /* 🚨 THIS IS THE CRITICAL FIX */
 /* Discord now disables glow via filters & smoothing */
 *{
@@ -188,4 +158,41 @@ nav *, header *, aside * {
         0 0 calc(var(--pios-glow-intensity) * 1px) rgba(255,255,255,0.8),
         0 0 calc(var(--pios-glow-intensity) * 4px) rgba(0,255,255,0.28)
         !important;
+}
+
+/* ===================================================== */
+/* REAL BLOOM GLOW USING DROP-SHADOW (2026 METHOD)       */
+/* ===================================================== */
+
+:root{
+  --pios-glow-size: 2.2px;     /* spread distance */
+  --pios-glow-strength: 0.45;  /* brightness */
+}
+
+/* wipe any old text shadows */
+*, *::before, *::after{
+  text-shadow: none !important;
+}
+
+/* apply glow using GPU drop-shadow instead */
+body,
+span,
+p,
+strong,
+em,
+h1,h2,h3,h4,h5,
+[class*="message"],
+[class*="username"],
+[class*="channel"],
+[class*="name"],
+nav *, header *, aside *{
+
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+
+  filter:
+    drop-shadow(0 0 0.6px rgba(255,255,255,0.9))               /* white edge */
+    drop-shadow(0 0 var(--pios-glow-size) rgba(255,255,255,0.7)) /* soft white */
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 2) rgba(0,255,255,var(--pios-glow-strength))) /* cyan bloom */
+  !important;
 }
