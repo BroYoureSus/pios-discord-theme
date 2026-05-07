@@ -10,7 +10,7 @@
 
 :root{
   --pios-glow-size: 2px;
-  --pios-glow-strength: 0.05;
+  --pios-glow-strength: 25;
   --pios-title-text: "Custom OS Modified";
 }
 
