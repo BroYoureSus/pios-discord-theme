@@ -1,61 +1,58 @@
 
 /**
- * piOS TEXT EDITION (CLEAN 2026 FIXED BUILD)
- * - No conflicts
- * - No hover bugs
- * - Single glow system (drop-shadow)
+ * piOS REBUILT (Discord Stable Edition 2026)
+ * - No global overrides
+ * - No filter hacks on UI
+ * - Pseudo-element neon system
+ * - Stable glow rendering
  */
 
 /* ================= VARIABLES ================= */
 
 :root{
-  --pios-glow-size: 1px;
-
-  /* THIS is the missing one */
-  --pios-glow-intensity: 0.25;
-
+  --pios-glow-size: 3px;
+  --pios-glow-opacity: 0.35;
   --pios-title-text: "Custom OS Modified";
 }
 
-/* ================= SAFETY RESET (minimal, non-breaking) ================= */
+/* ================= BASE UI ================= */
 
-body{
-  -webkit-font-smoothing: antialiased;
+.appMount-2yBXZl{
+  background:#000 !important;
 }
 
-/* DO NOT touch opacity or filter globally */
+/* keep text clean */
+body, span, p, strong, em, h1,h2,h3,h4,h5{
+  color:#fff !important;
+  text-shadow:none !important;
+}
 
+/* ================= NEON GLOW ENGINE ================= */
+/* uses pseudo-layer glow instead of filter (Discord-safe) */
 
-
-
-/* ================= TEXT GLOW VIA PSEUDO LAYER ================= */
-
-body,
-span,
-p,
-strong,
-em,
-h1,h2,h3,h4,h5,
 [class*="messageContent"],
-[class*="markup"]{
+[class*="markup"],
+[class*="username"],
+[class*="channelName"],
+[class*="name"]{
   position: relative;
   color: #fff !important;
 }
 
-/* create glow layer behind text */
-body::after,
-span::after,
-p::after,
-[class*="messageContent"]::after,
-[class*="markup"]::after{
+/* cyan glow layer */
+[class*="messageContent"]::before,
+[class*="markup"]::before,
+[class*="username"]::before,
+[class*="channelName"]::before,
+[class*="name"]::before{
   content: attr(data-text);
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
 
-  color: rgba(0,255,255,0.35);
-  filter: blur(4px);
+  color: rgba(0,255,255,var(--pios-glow-opacity));
+  filter: blur(var(--pios-glow-size));
   pointer-events: none;
 }
 
@@ -66,10 +63,12 @@ p::after,
   margin-left: 8px;
   font-weight: 700;
   letter-spacing: 1px;
+  color:#fff;
 }
 
-/* ================= APP BACKGROUND ONLY ================= */
+/* ================= SAFE HOVER BEHAVIOR ================= */
+/* prevents sticky UI bugs */
 
-.appMount-2yBXZl{
-  background:#000 !important;
+[class*="message"]:hover{
+  background: rgba(255,255,255,0.03) !important;
 }
