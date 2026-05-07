@@ -1,74 +1,57 @@
 
 /**
- * piOS REBUILT (Discord Stable Edition 2026)
- * - No global overrides
- * - No filter hacks on UI
- * - Pseudo-element neon system
- * - Stable glow rendering
+ * piOS FINAL WORKING BUILD (2026 Discord safe)
+ * - no filters
+ * - no pseudo hacks
+ * - stable text-shadow only
  */
 
 /* ================= VARIABLES ================= */
 
 :root{
-  --pios-glow-size: 3px;
-  --pios-glow-opacity: 0.35;
+  --pios-glow-size: 2px;
+  --pios-glow-intensity: 0.35;
   --pios-title-text: "Custom OS Modified";
 }
 
-/* ================= BASE UI ================= */
+/* ================= BASE ================= */
 
 .appMount-2yBXZl{
   background:#000 !important;
 }
 
-/* keep text clean */
-body, span, p, strong, em, h1,h2,h3,h4,h5{
+/* ================= CLEAN TEXT ================= */
+
+body,
+span,
+p,
+strong,
+em,
+h1,h2,h3,h4,h5{
   color:#fff !important;
-  text-shadow:none !important;
 }
 
-/* ================= NEON GLOW ENGINE ================= */
-/* uses pseudo-layer glow instead of filter (Discord-safe) */
+/* ================= REAL GLOW ENGINE ================= */
+/* ONLY safe selectors that actually render text */
 
 [class*="messageContent"],
 [class*="markup"],
 [class*="username"],
 [class*="channelName"],
 [class*="name"]{
-  position: relative;
-  color: #fff !important;
+
+  text-shadow:
+    0 0 1px rgba(255,255,255,0.9),
+    0 0 calc(var(--pios-glow-size) * 1px) rgba(255,255,255,var(--pios-glow-intensity)),
+    0 0 calc(var(--pios-glow-size) * 2px) rgba(0,255,255,var(--pios-glow-intensity))
+    !important;
 }
 
-/* cyan glow layer */
-[class*="messageContent"]::before,
-[class*="markup"]::before,
-[class*="username"]::before,
-[class*="channelName"]::before,
-[class*="name"]::before{
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-
-  color: rgba(0,255,255,var(--pios-glow-opacity));
-  filter: blur(var(--pios-glow-size));
-  pointer-events: none;
-}
-
-/* ================= TITLE TEXT ================= */
+/* ================= TITLE ================= */
 
 [class*="wordmark"]::after{
   content: var(--pios-title-text);
   margin-left: 8px;
   font-weight: 700;
-  letter-spacing: 1px;
   color:#fff;
-}
-
-/* ================= SAFE HOVER BEHAVIOR ================= */
-/* prevents sticky UI bugs */
-
-[class*="message"]:hover{
-  background: rgba(255,255,255,0.03) !important;
 }
