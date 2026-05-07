@@ -1,51 +1,52 @@
+
 /**
- * piOS TEXT EDITION (2026 Discord fix)
- * Aggressive text glow restoration
+ * piOS TEXT EDITION (CLEAN 2026 FIXED BUILD)
+ * - No conflicts
+ * - No hover bugs
+ * - Single glow system (drop-shadow)
  */
 
-/* 🚨 THIS IS THE CRITICAL FIX */
-/* Discord now disables glow via filters & smoothing */
-*{
-  -webkit-font-smoothing: auto !important;
-  text-rendering: optimizeLegibility !important;
-  filter: none !important;
+/* ================= VARIABLES ================= */
+
+:root{
+  --pios-glow-size: 2.2px;
+  --pios-glow-strength: 0.45;
+  --pios-title-text: "Custom OS Modified";
 }
 
-/* ================= FORCE APPLY GLOW ================= */
+/* ================= SAFETY RESET (minimal, non-breaking) ================= */
 
-/* EVERYTHING TEXT */
+body{
+  -webkit-font-smoothing: antialiased;
+}
+
+/* DO NOT touch opacity or filter globally */
+
+/* ================= TEXT TARGETING ================= */
+
 body,
 span,
 p,
 strong,
 em,
-h1,h2,h3,h4,h5 {
-  text-shadow: var(--pios-glow) !important;
-}
+h1,h2,h3,h4,h5,
+[class*="messageContent"],
+[class*="markup"],
+[class*="username"],
+[class*="channelName"],
+[class*="name"] {
 
-/* Messages */
-[class*="message"] *{
-  text-shadow: var(--pios-glow) !important;
-}
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 
-/* Channel list */
-nav *{
-  text-shadow: var(--pios-glow) !important;
-}
+  text-shadow: none !important;
 
-/* Server list */
-aside *{
-  text-shadow: var(--pios-glow) !important;
-}
-
-/* Settings */
-[class*="content"] *{
-  text-shadow: var(--pios-glow) !important;
-}
-
-/* Usernames & headers */
-header *{
-  text-shadow: var(--pios-glow) !important;
+  filter:
+    drop-shadow(0 0 0.4px rgba(255,255,255,0.9))
+    drop-shadow(0 0 var(--pios-glow-size) rgba(255,255,255,0.65))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 2)
+    rgba(0,255,255,var(--pios-glow-strength)))
+    !important;
 }
 
 /* ================= TITLE TEXT ================= */
@@ -55,144 +56,10 @@ header *{
   margin-left: 8px;
   font-weight: 700;
   letter-spacing: 1px;
-  text-shadow: var(--pios-glow) !important;
 }
 
-/* ================= OPTIONAL BLACK BACKGROUND ================= */
+/* ================= APP BACKGROUND ONLY ================= */
 
 .appMount-2yBXZl{
   background:#000 !important;
-}
-
-/* ===== HARD RESET DISCORD TEXT SHADOW ===== */
-
-/* remove ALL existing shadows Discord adds */
-*,
-*::before,
-*::after {
-  text-shadow: none !important;
-}
-
-/* ===== CLEAN WHITE + CYAN GLOW ===== */
-
-:root{
-  --pios-glow-intensity: 1.6;
-}
-
-/* apply glow only once, cleanly */
-body,
-span,
-p,
-strong,
-em,
-h1,h2,h3,h4,h5,
-[class*="message"],
-[class*="channel"],
-[class*="username"],
-[class*="name"],
-nav *, header *, aside *{
-  text-shadow:
-    /* white edge highlight */
-    0 0 0.4px rgba(255,255,255,0.9),
-
-    /* soft white glow hugging letters */
-    0 0 calc(var(--pios-glow-intensity) * 1px) rgba(255,255,255,0.75),
-
-    /* cyan bloom */
-    0 0 calc(var(--pios-glow-intensity) * 3px) rgba(0,255,255,0.35)
-    !important;
-}
-
-/* ===================================================== */
-/* DISCORD TEXT OPACITY + FILTER NUCLEAR RESET (2026)    */
-/* ===================================================== */
-
-/* Remove Discord dimming + filters from ALL containers */
-[class*="container"],
-[class*="content"],
-[class*="chat"],
-[class*="messages"],
-[class*="sidebar"],
-[class*="members"],
-main, section, article, aside, nav, header, footer {
-    opacity: 1 !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-}
-
-/* Remove any remaining inherited opacity */
-* {
-    opacity: 1 !important;
-}
-
-/* ===================================================== */
-/* CLEAN WHITE TEXT + SUBTLE CYAN BLOOM                  */
-/* ===================================================== */
-
-:root {
-    --pios-glow-intensity: 1.3;
-}
-
-/* First wipe ALL shadows completely */
-*, *::before, *::after {
-    text-shadow: none !important;
-}
-
-/* Then apply our glow ONCE */
-body,
-span,
-p,
-strong,
-em,
-h1,h2,h3,h4,h5,
-[class*="message"],
-[class*="username"],
-[class*="channel"],
-[class*="name"],
-nav *, header *, aside * {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-
-    text-shadow:
-        0 0 0.3px rgba(255,255,255,0.95),
-        0 0 calc(var(--pios-glow-intensity) * 1px) rgba(255,255,255,0.8),
-        0 0 calc(var(--pios-glow-intensity) * 4px) rgba(0,255,255,0.28)
-        !important;
-}
-
-/* ===================================================== */
-/* REAL BLOOM GLOW USING DROP-SHADOW (2026 METHOD)       */
-/* ===================================================== */
-
-:root{
-  --pios-glow-size: 8px;     /* spread distance */
-  --pios-glow-strength: 0.75;  /* brightness */
-}
-
-/* wipe any old text shadows */
-*, *::before, *::after{
-  text-shadow: none !important;
-}
-
-/* apply glow using GPU drop-shadow instead */
-body,
-span,
-p,
-strong,
-em,
-h1,h2,h3,h4,h5,
-[class*="message"],
-[class*="username"],
-[class*="channel"],
-[class*="name"],
-nav *, header *, aside *{
-
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-
-  filter:
-    drop-shadow(0 0 0.6px rgba(255,255,255,0.9))               /* white edge */
-    drop-shadow(0 0 var(--pios-glow-size) rgba(255,255,255,0.7)) /* soft white */
-    drop-shadow(0 0 calc(var(--pios-glow-size) * 2) rgba(0,255,255,var(--pios-glow-strength))) /* cyan bloom */
-  !important;
 }
