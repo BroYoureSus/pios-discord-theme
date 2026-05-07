@@ -26,7 +26,8 @@ body{
 /* DO NOT touch opacity or filter globally */
 
 
-/* ================= REAL CONTROLLED GLOW ================= */
+
+/* ================= FULLY CONTROLLED GLOW ================= */
 
 body,
 span,
@@ -45,11 +46,12 @@ h1,h2,h3,h4,h5,
 
   text-shadow:none !important;
 
-  filter: drop-shadow(0 0 0.4px rgba(255,255,255,0.9))
-          drop-shadow(0 0 var(--pios-glow-size) rgba(255,255,255,var(--pios-glow-intensity)))
-          drop-shadow(0 0 calc(var(--pios-glow-size) * 2) rgba(0,255,255,var(--pios-glow-intensity)))
-          drop-shadow(0 0 calc(var(--pios-glow-size) * 3) rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.6)))
-          !important;
+  filter:
+    drop-shadow(0 0 0.4px rgba(255,255,255,var(--pios-glow-intensity)))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 1px) rgba(255,255,255,var(--pios-glow-intensity)))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 2px) rgba(0,255,255,var(--pios-glow-intensity)))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 3px) rgba(0,255,255,var(--pios-glow-intensity)))
+    !important;
 }
 
 /* ================= TITLE TEXT ================= */
