@@ -1,57 +1,61 @@
-
 /**
- * piOS FINAL WORKING BUILD (2026 Discord safe)
- * - no filters
- * - no pseudo hacks
- * - stable text-shadow only
+ * piOS CORE (Fresh Rebuild 2026)
+ * Stable neon text system for Discord
  */
 
 /* ================= VARIABLES ================= */
 
-:root{
+:root {
   --pios-glow-size: 2px;
   --pios-glow-intensity: 0.35;
+  --pios-accent: 0, 255, 255; /* cyan RGB */
   --pios-title-text: "Custom OS Modified";
 }
 
-/* ================= BASE ================= */
+/* ================= BACKGROUND ================= */
 
-.appMount-2yBXZl{
-  background:#000 !important;
+.appMount-2yBXZl {
+  background: #000 !important;
 }
 
-/* ================= CLEAN TEXT ================= */
+/* ================= BASE TEXT ================= */
 
 body,
 span,
 p,
 strong,
 em,
-h1,h2,h3,h4,h5{
-  color:#fff !important;
+h1, h2, h3, h4, h5 {
+  color: #ffffff !important;
 }
 
-/* ================= REAL GLOW ENGINE ================= */
-/* ONLY safe selectors that actually render text */
+/* ================= MESSAGE GLOW CORE ================= */
 
 [class*="messageContent"],
-[class*="markup"],
-[class*="username"],
-[class*="channelName"],
-[class*="name"]{
-
+[class*="markup"] {
   text-shadow:
-    0 0 1px rgba(255,255,255,0.9),
-    0 0 calc(var(--pios-glow-size) * 1px) rgba(255,255,255,var(--pios-glow-intensity)),
-    0 0 calc(var(--pios-glow-size) * 2px) rgba(0,255,255,var(--pios-glow-intensity))
+    0 0 1px rgba(255,255,255,0.8),
+    0 0 calc(var(--pios-glow-size) * 1px)
+      rgba(var(--pios-accent), calc(var(--pios-glow-intensity) * 0.8)),
+    0 0 calc(var(--pios-glow-size) * 2px)
+      rgba(var(--pios-accent), calc(var(--pios-glow-intensity) * 0.5))
     !important;
 }
 
-/* ================= TITLE ================= */
+/* ================= OPTIONAL: USERNAME ACCENT ================= */
 
-[class*="wordmark"]::after{
+[class*="username"] {
+  text-shadow:
+    0 0 1px rgba(255,255,255,0.8),
+    0 0 4px rgba(var(--pios-accent), 0.25)
+    !important;
+}
+
+/* ================= TITLE TEXT ================= */
+
+[class*="wordmark"]::after {
   content: var(--pios-title-text);
   margin-left: 8px;
   font-weight: 700;
-  color:#fff;
+  color: #fff;
 }
