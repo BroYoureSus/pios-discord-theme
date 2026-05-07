@@ -93,3 +93,42 @@ header *{
 .appMount-2yBXZl{
   background:#000 !important;
 }
+
+/* ===== HARD RESET DISCORD TEXT SHADOW ===== */
+
+/* remove ALL existing shadows Discord adds */
+*,
+*::before,
+*::after {
+  text-shadow: none !important;
+}
+
+/* ===== CLEAN WHITE + CYAN GLOW ===== */
+
+:root{
+  --pios-glow-intensity: 1.6;
+}
+
+/* apply glow only once, cleanly */
+body,
+span,
+p,
+strong,
+em,
+h1,h2,h3,h4,h5,
+[class*="message"],
+[class*="channel"],
+[class*="username"],
+[class*="name"],
+nav *, header *, aside *{
+  text-shadow:
+    /* white edge highlight */
+    0 0 0.4px rgba(255,255,255,0.9),
+
+    /* soft white glow hugging letters */
+    0 0 calc(var(--pios-glow-intensity) * 1px) rgba(255,255,255,0.75),
+
+    /* cyan bloom */
+    0 0 calc(var(--pios-glow-intensity) * 3px) rgba(0,255,255,0.35)
+    !important;
+}
