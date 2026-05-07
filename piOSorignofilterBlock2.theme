@@ -27,7 +27,8 @@ body{
 
 
 
-/* ================= CONTROLLED BUT ALWAYS VISIBLE GLOW ================= */
+
+/* ================= CONTROLLED BUT STABLE GLOW ================= */
 
 body,
 span,
@@ -44,21 +45,12 @@ h1,h2,h3,h4,h5,
   color:#fff !important;
   -webkit-text-fill-color:#fff !important;
 
-  text-shadow:none !important;
-
-  /* base glow never disappears */
-  filter:
-    drop-shadow(0 0 0.4px rgba(255,255,255,0.9))
-
-    /* scalable glow */
-    drop-shadow(0 0 calc(1px + var(--pios-glow-size))
-      rgba(255,255,255,calc(0.2 + var(--pios-glow-intensity))))
-
-    drop-shadow(0 0 calc(2px + var(--pios-glow-size))
-      rgba(0,255,255,calc(0.15 + var(--pios-glow-intensity))))
-
-    drop-shadow(0 0 calc(4px + var(--pios-glow-size))
-      rgba(0,255,255,calc(0.1 + var(--pios-glow-intensity))))
+  text-shadow:
+    0 0 1px rgba(255,255,255,0.9),
+    0 0 calc(var(--pios-glow-size) * 2px)
+      rgba(255,255,255,var(--pios-glow-intensity)),
+    0 0 calc(var(--pios-glow-size) * 4px)
+      rgba(0,255,255,var(--pios-glow-intensity))
     !important;
 }
 
