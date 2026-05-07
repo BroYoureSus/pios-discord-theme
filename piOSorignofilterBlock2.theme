@@ -12,7 +12,7 @@
   --pios-glow-size: 1px;
 
   /* THIS is the missing one */
-  --pios-glow-intensity: 0;
+  --pios-glow-intensity: 0.15;
 
   --pios-title-text: "Custom OS Modified";
 }
