@@ -9,8 +9,8 @@
 /* ================= VARIABLES ================= */
 
 :root{
-  --pios-glow-size: 2.2px;
-  --pios-glow-strength: 0.45;
+  --pios-glow-size: 4px;
+  --pios-glow-strength: 0.3;
   --pios-title-text: "Custom OS Modified";
 }
 
