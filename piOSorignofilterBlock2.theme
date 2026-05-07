@@ -1,6 +1,57 @@
 
-/* ================= DIAGNOSTIC TEST ================= */
+/**
+ * piOS FINAL WORKING BUILD (2026 Discord safe)
+ * - no filters
+ * - no pseudo hacks
+ * - stable text-shadow only
+ */
 
-* {
-  text-shadow: 0 0 8px red !important;
+/* ================= VARIABLES ================= */
+
+:root{
+  --pios-glow-size: 2px;
+  --pios-glow-intensity: 0.35;
+  --pios-title-text: "Custom OS Modified";
+}
+
+/* ================= BASE ================= */
+
+.appMount-2yBXZl{
+  background:#000 !important;
+}
+
+/* ================= CLEAN TEXT ================= */
+
+body,
+span,
+p,
+strong,
+em,
+h1,h2,h3,h4,h5{
+  color:#fff !important;
+}
+
+/* ================= REAL GLOW ENGINE ================= */
+/* ONLY safe selectors that actually render text */
+
+[class*="messageContent"],
+[class*="markup"],
+[class*="username"],
+[class*="channelName"],
+[class*="name"]{
+
+  text-shadow:
+    0 0 1px rgba(255,255,255,0.9),
+    0 0 calc(var(--pios-glow-size) * 1px) rgba(255,255,255,var(--pios-glow-intensity)),
+    0 0 calc(var(--pios-glow-size) * 2px) rgba(0,255,255,var(--pios-glow-intensity))
+    !important;
+}
+
+/* ================= TITLE ================= */
+
+[class*="wordmark"]::after{
+  content: var(--pios-title-text);
+  margin-left: 8px;
+  font-weight: 700;
+  color:#fff;
 }
