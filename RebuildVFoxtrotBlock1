@@ -15,8 +15,8 @@
 }
 
 /* Glow only real text */
-[class*="messageContent"],
-[class*="markup"],
+[class*="contents"] [class*="markup"],   /* ← NEW: actual message text */
+[class*="messageContent"] span,
 [class*="username"],
 [class*="channelName"],
 [class*="name"],
@@ -27,10 +27,7 @@ h1,h2,h3,strong,em{
   text-shadow:none !important;
 
   filter:
-    /* crisp white edge */
     drop-shadow(0 0 0.4px rgba(255,255,255,0.95))
-
-    /* cyan glow */
     drop-shadow(0 0 var(--pios-glow-size)
       rgba(0,255,255,var(--pios-glow-intensity)))
   !important;
