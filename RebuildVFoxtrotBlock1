@@ -1,11 +1,11 @@
 /**
- * piOS PERFORMANCE GLOW
- * Optimized for FPS + readability
+ * piOS PERFORMANCE GLOW v1.1
+ * Slightly stronger but still FPS-safe
  */
 
 :root{
-  --pios-glow-size: 1.4px;
-  --pios-glow-intensity: 0.12;
+  --pios-glow-size: 2px;      /* was 1.4 */
+  --pios-glow-intensity: 0.16; /* was 0.12 */
   --pios-title-text: "Custom OS Modified";
 }
 
@@ -14,7 +14,7 @@
   background:#000 !important;
 }
 
-/* Only target REAL TEXT (huge performance win) */
+/* Glow only real text */
 [class*="messageContent"],
 [class*="markup"],
 [class*="username"],
@@ -26,12 +26,11 @@ h1,h2,h3,strong,em{
   -webkit-text-fill-color:#fff !important;
   text-shadow:none !important;
 
-  /* Only TWO shadows now */
   filter:
-    /* tiny crisp edge */
-    drop-shadow(0 0 0.35px rgba(255,255,255,0.9))
+    /* crisp white edge */
+    drop-shadow(0 0 0.4px rgba(255,255,255,0.95))
 
-    /* small cyan glow */
+    /* cyan glow */
     drop-shadow(0 0 var(--pios-glow-size)
       rgba(0,255,255,var(--pios-glow-intensity)))
   !important;
