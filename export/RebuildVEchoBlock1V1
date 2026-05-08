@@ -19,7 +19,7 @@
   background:#000 !important;
 }
 
-/* ===== CRISP GRADIENT TEXT ===== */
+/* ===== GRADIENT TEXT (DISCORD SAFE) ===== */
 
 [class*="messageContent"],
 [class*="markup"],
@@ -28,33 +28,21 @@
 [class*="repliedMessage"] [class*="username"],
 [class*="members"] [class*="username"],
 [class*="members"] [class*="name"]{
-  position: relative;
-  color: #ffffff !important;
-  -webkit-text-fill-color:#ffffff !important;
-  text-shadow: 0 0 0.6px rgba(255,255,255,0.9);
-}
-
-/* ===== GLOW LAYER ===== */
-
-[class*="messageContent"]::before,
-[class*="markup"]::before,
-[class*="message"] [class*="username"]::before,
-[class*="members"] [class*="username"]::before{
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  z-index: -1;
 
   background: linear-gradient(
     180deg,
-    #ff2bd6,
-    #b026ff,
+    #ff0088,
+    #a020ff 50%,
     #00eaff
   );
 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 
-  filter: blur(6px);
-  opacity: 0.8;
+  /* OUTER NEON GLOW ONLY */
+  text-shadow:
+    0 0 8px rgba(255,0,170,0.25),
+    0 0 18px rgba(160,32,255,0.25),
+    0 0 28px rgba(0,234,255,0.22);
 }
