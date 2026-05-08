@@ -4,8 +4,8 @@
  */
 
 :root{
-  --pios-glow-size: 2px;      /* was 1.4 */
-  --pios-glow-intensity: 0.18; /* was 0.12 */
+  --pios-glow-size: 2.4px;      /* was 1.4 */
+  --pios-glow-intensity: 0.2; /* was 0.12 */
   --pios-title-text: "Custom OS Modified";
 }
 
