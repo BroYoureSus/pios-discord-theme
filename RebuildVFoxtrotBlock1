@@ -1,11 +1,13 @@
 /**
- * piOS PERFORMANCE GLOW v1.1
- * Slightly stronger but still FPS-safe
+ * piOS PERFORMANCE GLOW v2.0
+ * Real variable-controlled glow (GPU friendly)
  */
 
 :root{
-  --pios-glow-size: 1.6px;      
-  --pios-glow-intensity: 0; 
+  /* MASTER GLOW CONTROLS */
+  --pios-glow-size: 3.5px;      /* 2px–6px sweet spot */
+  --pios-glow-intensity: 0.35;  /* 0.15–0.6 sweet spot */
+
   --pios-title-text: "Custom OS Modified";
 }
 
@@ -14,63 +16,56 @@
   background:#000 !important;
 }
 
-/* ================= MESSAGE GLOW ================= */
+/* ================= MESSAGE TEXT GLOW ================= */
 
 [class*="messageContent"],
 [class*="markup"]{
-
   color:#fff !important;
   -webkit-text-fill-color:#fff !important;
   text-shadow:none !important;
 
   filter:
-    drop-shadow(0 0 0.45px rgba(255,255,255,0.95))
-    drop-shadow(0 0 calc(var(--pios-glow-size) * 0.9)
-      rgba(0,255,255,calc(var(--pios-glow-intensity) * 1.25)))
-    drop-shadow(0 0 calc(var(--pios-glow-size) * 2.6)
+    drop-shadow(0 0 0.6px rgba(255,255,255,0.95))
+    drop-shadow(0 0 var(--pios-glow-size)
       rgba(0,255,255,var(--pios-glow-intensity)))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 2)
+      rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.7)))
   !important;
 }
 
-/* ================= MESSAGE USERNAME / HEADER GLOW ================= */
+/* ================= MESSAGE USERNAME / HEADER ================= */
 
-[class*="message"] [class*="header"] [class*="username"],
-[class*="message"] [class*="header"] [class*="name"],
+[class*="message"] [class*="username"],
 [class*="message"] [class*="timestamp"],
 [class*="repliedMessage"] [class*="username"]{
-
   color:#fff !important;
   -webkit-text-fill-color:#fff !important;
   text-shadow:none !important;
 
   filter:
-    drop-shadow(0 0 0.4px rgba(255,255,255,0.95))
-    drop-shadow(0 0 calc(var(--pios-glow-size) * 0.6)
-      rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.7)))
-    drop-shadow(0 0 calc(var(--pios-glow-size) * 1.6)
+    drop-shadow(0 0 0.5px rgba(255,255,255,0.9))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 0.7)
+      rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.75)))
+  !important;
+}
+
+/* ================= MEMBER LIST (REDUCED GLOW) ================= */
+
+[class*="members"] [class*="username"],
+[class*="members"] [class*="name"]{
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  text-shadow:none !important;
+
+  filter:
+    drop-shadow(0 0 0.4px rgba(255,255,255,0.85))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 0.45)
       rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.5)))
   !important;
 }
 
-/* ================= MEMBER LIST GLOW (REDUCED) ================= */
+/* ================= TITLE TEXT ================= */
 
-[class*="members"] [class*="username"],
-[class*="members"] [class*="name"]{
-
-  color:#fff !important;
-  -webkit-text-fill-color:#fff !important;
-  text-shadow:none !important;
-
-  filter:
-    drop-shadow(0 0 0.35px rgba(255,255,255,0.9))
-    drop-shadow(0 0 calc(var(--pios-glow-size) * 0.45)
-      rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.55)))
-    drop-shadow(0 0 calc(var(--pios-glow-size) * 1.2)
-      rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.45)))
-  !important;
-}
-
-/* Title text */
 [class*="wordmark"]::after{
   content: var(--pios-title-text);
   margin-left: 8px;
