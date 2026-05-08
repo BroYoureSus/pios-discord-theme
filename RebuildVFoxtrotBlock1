@@ -4,8 +4,8 @@
  */
 
 :root{
-  --pios-glow-size: 2px;      /* was 1.4 */
-  --pios-glow-intensity: 0.16; /* was 0.12 */
+  --pios-glow-size: 2.5px;      /* was 1.4 */
+  --pios-glow-intensity: 0.2; /* was 0.12 */
   --pios-title-text: "Custom OS Modified";
 }
 
@@ -27,11 +27,17 @@ h1,h2,h3,strong,em{
   text-shadow:none !important;
 
   filter:
-    drop-shadow(0 0 0.4px rgba(255,255,255,0.95))
-    drop-shadow(0 0 var(--pios-glow-size)
+    /* crisp white edge */
+    drop-shadow(0 0 0.45px rgba(255,255,255,0.95))
+
+    /* tight cyan glow hugging letters */
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 0.8)
+      rgba(0,255,255,calc(var(--pios-glow-intensity) * 1.2)))
+
+    /* soft bloom */
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 2.2)
       rgba(0,255,255,var(--pios-glow-intensity)))
   !important;
-}
 
 /* Title text */
 [class*="wordmark"]::after{
