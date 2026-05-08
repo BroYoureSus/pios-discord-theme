@@ -19,7 +19,7 @@
   background:#000 !important;
 }
 
-/* ===== CLEAN NEON GRADIENT TEXT ===== */
+/* ===== CRISP GRADIENT TEXT ===== */
 
 [class*="messageContent"],
 [class*="markup"],
@@ -28,31 +28,33 @@
 [class*="repliedMessage"] [class*="username"],
 [class*="members"] [class*="username"],
 [class*="members"] [class*="name"]{
-
-  /* vertical gradient = consistent across lines */
-  background: linear-gradient(
-    180deg,
-    #ff2bd6 0%,
-    #b026ff 45%,
-    #00eaff 100%
-  );
-
-  background-size: 100% 200%;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-
-  /* NEON SIGN GLOW (separate from gradient) */
-  text-shadow:
-    0 0 0.6px rgba(255,255,255,0.95),
-    0 0 4px rgba(255,255,255,0.9),
-    0 0 10px rgba(255,0,170,0.35),
-    0 0 18px rgba(0,234,255,0.25);
+  position: relative;
+  color: #ffffff !important;
+  -webkit-text-fill-color:#ffffff !important;
+  text-shadow: 0 0 0.6px rgba(255,255,255,0.9);
 }
 
-/* Title text */
-[class*="wordmark"]::after{
-  content: var(--pios-title-text);
-  margin-left: 8px;
-  font-weight: 700;
+/* ===== GLOW LAYER ===== */
+
+[class*="messageContent"]::before,
+[class*="markup"]::before,
+[class*="message"] [class*="username"]::before,
+[class*="members"] [class*="username"]::before{
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    180deg,
+    #ff2bd6,
+    #b026ff,
+    #00eaff
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: blur(6px);
+  opacity: 0.8;
 }
