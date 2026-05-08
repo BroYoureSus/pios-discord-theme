@@ -19,7 +19,7 @@
   background:#000 !important;
 }
 
-/* ===== GRADIENT TEXT + GLOW ===== */
+/* ===== CLEAN NEON GRADIENT TEXT ===== */
 
 [class*="messageContent"],
 [class*="markup"],
@@ -29,22 +29,25 @@
 [class*="members"] [class*="username"],
 [class*="members"] [class*="name"]{
 
+  /* vertical gradient = consistent across lines */
   background: linear-gradient(
-    90deg,
-    var(--pios-grad-1),
-    var(--pios-grad-2),
-    var(--pios-grad-3)
+    180deg,
+    #ff2bd6 0%,
+    #b026ff 45%,
+    #00eaff 100%
   );
 
+  background-size: 100% 200%;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
 
+  /* NEON SIGN GLOW (separate from gradient) */
   text-shadow:
-    0 0 0.7px rgba(255,255,255,0.95),
-    0 0 var(--pios-glow-size) var(--pios-grad-1),
-    0 0 calc(var(--pios-glow-size) * 2) var(--pios-grad-2),
-    0 0 calc(var(--pios-glow-size) * 3) var(--pios-grad-3);
+    0 0 0.6px rgba(255,255,255,0.95),
+    0 0 4px rgba(255,255,255,0.9),
+    0 0 10px rgba(255,0,170,0.35),
+    0 0 18px rgba(0,234,255,0.25);
 }
 
 /* Title text */
