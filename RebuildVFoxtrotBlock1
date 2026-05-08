@@ -32,6 +32,26 @@
   !important;
 }
 
+/* ================= MESSAGE USERNAME / HEADER GLOW ================= */
+
+[class*="message"] [class*="header"] [class*="username"],
+[class*="message"] [class*="header"] [class*="name"],
+[class*="message"] [class*="timestamp"],
+[class*="repliedMessage"] [class*="username"]{
+
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  text-shadow:none !important;
+
+  filter:
+    drop-shadow(0 0 0.4px rgba(255,255,255,0.95))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 0.6)
+      rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.7)))
+    drop-shadow(0 0 calc(var(--pios-glow-size) * 1.6)
+      rgba(0,255,255,calc(var(--pios-glow-intensity) * 0.5)))
+  !important;
+}
+
 /* ================= MEMBER LIST GLOW (REDUCED) ================= */
 
 [class*="members"] [class*="username"],
