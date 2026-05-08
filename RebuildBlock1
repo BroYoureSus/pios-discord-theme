@@ -1,0 +1,99 @@
+/**
+ * piOS TEXT EDITION — UNSTABLE TERMINAL BUILD
+ * Clean base + delayed glow ramp system
+ * 3 min idle → 7 min ramp → hold forever
+ */
+
+/* ================= VARIABLES ================= */
+
+:root{
+  --pios-glow-size: 1px;
+  --pios-glow-intensity: 0.05;
+  --pios-title-text: "Custom OS Modified";
+}
+
+/* ================= UNSTABLE TERMINAL RAMP ================= */
+/* 180s delay → 420s ramp → hold forever */
+
+:root{
+  animation: piosRamp 420s linear forwards;
+  animation-delay: 180s;
+}
+
+@keyframes piosRamp{
+  0%{
+    --pios-glow-intensity: 0.05;
+    --pios-glow-size: 1px;
+  }
+  20%{
+    --pios-glow-intensity: 0.15;
+    --pios-glow-size: 1.5px;
+  }
+  40%{
+    --pios-glow-intensity: 0.25;
+    --pios-glow-size: 2px;
+  }
+  60%{
+    --pios-glow-intensity: 0.40;
+    --pios-glow-size: 3px;
+  }
+  80%{
+    --pios-glow-intensity: 0.55;
+    --pios-glow-size: 4px;
+  }
+  100%{
+    --pios-glow-intensity: 0.65;
+    --pios-glow-size: 5px;
+  }
+}
+
+/* ================= SAFETY RESET ================= */
+
+body{
+  -webkit-font-smoothing: antialiased;
+  background:#000 !important;
+}
+
+/* ================= GLOBAL TEXT GLOW ================= */
+
+body,
+span,
+p,
+strong,
+em,
+h1,h2,h3,h4,h5,
+[class*="messageContent"],
+[class*="markup"],
+[class*="username"],
+[class*="channelName"],
+[class*="name"]{
+
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  text-shadow:none !important;
+
+  filter:
+    drop-shadow(0 0 0.4px rgba(255,255,255,0.9))
+    drop-shadow(0 0 calc(1px + var(--pios-glow-size))
+      rgba(255,255,255,calc(0.15 + var(--pios-glow-intensity))))
+    drop-shadow(0 0 calc(3px + var(--pios-glow-size))
+      rgba(0,255,255,calc(0.2 + var(--pios-glow-intensity))))
+    drop-shadow(0 0 calc(6px + var(--pios-glow-size))
+      rgba(0,255,255,calc(0.15 + var(--pios-glow-intensity))))
+    !important;
+}
+
+/* ================= TITLE TEXT ================= */
+
+[class*="wordmark"]::after{
+  content: var(--pios-title-text);
+  margin-left: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ================= APP BACKGROUND ================= */
+
+.appMount-2yBXZl{
+  background:#000 !important;
+}
