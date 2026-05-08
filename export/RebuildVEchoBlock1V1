@@ -1,0 +1,55 @@
+/**
+ * piOS PERFORMANCE GLOW v3.1 — HIGH CONTRAST TEST GRADIENT
+ */
+
+:root{
+  --pios-glow-size: 3.8px;
+  --pios-glow-intensity: 0.45;
+
+  /* COMPLEMENTARY NEON GRADIENT */
+  --pios-grad-1: #ff0088;  /* hot pink */
+  --pios-grad-2: #a020ff;  /* purple bridge */
+  --pios-grad-3: #00eaff;  /* electric cyan */
+
+  --pios-title-text: "Custom OS Modified";
+}
+
+/* Background */
+.appMount-2yBXZl{
+  background:#000 !important;
+}
+
+/* ===== GRADIENT TEXT + GLOW ===== */
+
+[class*="messageContent"],
+[class*="markup"],
+[class*="message"] [class*="username"],
+[class*="message"] [class*="timestamp"],
+[class*="repliedMessage"] [class*="username"],
+[class*="members"] [class*="username"],
+[class*="members"] [class*="name"]{
+
+  background: linear-gradient(
+    90deg,
+    var(--pios-grad-1),
+    var(--pios-grad-2),
+    var(--pios-grad-3)
+  );
+
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+
+  text-shadow:
+    0 0 0.7px rgba(255,255,255,0.95),
+    0 0 var(--pios-glow-size) var(--pios-grad-1),
+    0 0 calc(var(--pios-glow-size) * 2) var(--pios-grad-2),
+    0 0 calc(var(--pios-glow-size) * 3) var(--pios-grad-3);
+}
+
+/* Title text */
+[class*="wordmark"]::after{
+  content: var(--pios-title-text);
+  margin-left: 8px;
+  font-weight: 700;
+}
